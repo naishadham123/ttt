@@ -1,8 +1,7 @@
 version: "3"
-
 services:
   springboot:
-    image: 142390311734.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-app:VERSION
+    image: naishadham123/spring-app:1
     restart: always # This will be ignored if we deploy in docker swarm
     container_name: spring
 
