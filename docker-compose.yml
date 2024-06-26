@@ -1,16 +1,18 @@
-version: '3.1'
+version: "3"
 
 services:
   springboot:
     image: 142390311734.dkr.ecr.ap-south-1.amazonaws.com/spring-boot-app:VERSION
     restart: always # This will be ignored if we deploy in docker swarm
+    container_name: spring
+
     environment:
     - MONGO_DB_HOSTNAME=mongo
     - MONGO_DB_USERNAME=devdb
     - MONGO_DB_PASSWORD=devdb123
     ports:
       - 8080:8080
-    working_dir: /opt/app
+    
     depends_on:
       - mongo
     networks:
@@ -27,6 +29,7 @@ services:
 
   mongo:
     image: mongo
+    container_name: mongodb
     environment:
     - MONGO_INITDB_ROOT_USERNAME=devdb
     - MONGO_INITDB_ROOT_PASSWORD=devdb123
